@@ -1,0 +1,482 @@
+{
+  "6e899b8d": {
+    "id": "6e899b8d",
+    "started_at": "2026-07-26T11:49:20.702067",
+    "ended_at": null,
+    "turns": [
+      {
+        "speaker": "agent",
+        "text": "Thanks for calling Riverside Fitness, this is Ava. How can I help you today?"
+      },
+      {
+        "speaker": "customer",
+        "text": "hey"
+      },
+      {
+        "speaker": "agent",
+        "text": "I don't have that information yet \u2014 let me connect you with our team so they can help directly.",
+        "meta": {
+          "escalated": true,
+          "action": "escalated_no_kb_match"
+        }
+      }
+    ],
+    "escalated": true,
+    "resolved": false,
+    "status": "in_progress"
+  },
+  "b5a686a0": {
+    "id": "b5a686a0",
+    "started_at": "2026-07-26T11:50:40.083127",
+    "ended_at": null,
+    "turns": [
+      {
+        "speaker": "agent",
+        "text": "Thanks for calling Riverside Fitness, this is Ava. How can I help you today?"
+      }
+    ],
+    "escalated": false,
+    "resolved": false,
+    "status": "in_progress"
+  },
+  "c1df1f91": {
+    "id": "c1df1f91",
+    "started_at": "2026-07-26T12:01:55.945176",
+    "ended_at": "2026-07-26T12:02:13.294257",
+    "turns": [
+      {
+        "speaker": "agent",
+        "text": "Thanks for calling Riverside Fitness, this is Ava. How can I help you today?"
+      }
+    ],
+    "escalated": false,
+    "resolved": true,
+    "status": "resolved"
+  },
+  "39d8d448": {
+    "id": "39d8d448",
+    "started_at": "2026-07-26T12:04:59.828702",
+    "ended_at": null,
+    "turns": [
+      {
+        "speaker": "agent",
+        "text": "Thanks for calling Riverside Fitness, this is Ava. How can I help you today?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Hey, what's your name?"
+      },
+      {
+        "speaker": "agent",
+        "text": "I don't have that information yet \u2014 let me connect you with our team so they can help directly.",
+        "meta": {
+          "escalated": true,
+          "action": "escalated_no_kb_match"
+        }
+      },
+      {
+        "speaker": "customer",
+        "text": "Hey, what's your name?"
+      },
+      {
+        "speaker": "agent",
+        "text": "I don't have that information yet \u2014 let me connect you with our team so they can help directly.",
+        "meta": {
+          "escalated": true,
+          "action": "escalated_no_kb_match"
+        }
+      }
+    ],
+    "escalated": true,
+    "resolved": false,
+    "status": "in_progress"
+  },
+  "10c8d5f9": {
+    "id": "10c8d5f9",
+    "started_at": "2026-07-26T12:05:27.504070",
+    "ended_at": "2026-07-26T12:06:21.226662",
+    "turns": [
+      {
+        "speaker": "agent",
+        "text": "Thanks for calling Riverside Fitness, this is Ava. How can I help you today?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Do you have a pool there?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Yes, we have a 25-meter indoor pool open during all staffed hours.",
+        "meta": {
+          "escalated": false,
+          "action": null
+        }
+      },
+      {
+        "speaker": "customer",
+        "text": "Do you have a female trainer?"
+      },
+      {
+        "speaker": "agent",
+        "text": "yes we do have  female and male coach , what is your preference ?",
+        "meta": {
+          "escalated": false,
+          "action": null
+        }
+      },
+      {
+        "speaker": "customer",
+        "text": "I would go with a female, so do you have a contact number for that?"
+      },
+      {
+        "speaker": "agent",
+        "text": "yes we do have  female and male coach , what is your preference ?",
+        "meta": {
+          "escalated": false,
+          "action": null
+        }
+      },
+      {
+        "speaker": "customer",
+        "text": "I would like to end the call right away, what is the option to end the call?"
+      },
+      {
+        "speaker": "agent",
+        "text": "I don't have that information yet \u2014 let me connect you with our team so they can help directly.",
+        "meta": {
+          "escalated": true,
+          "action": "escalated_no_kb_match"
+        }
+      }
+    ],
+    "escalated": true,
+    "resolved": false,
+    "status": "escalated"
+  },
+  "95d2d84b": {
+    "id": "95d2d84b",
+    "started_at": "2026-07-26T13:45:47.622056",
+    "ended_at": null,
+    "turns": [
+      {
+        "speaker": "agent",
+        "text": "Thanks for calling Riverside Fitness, this is Ava. How can I help you today?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Can you please confirm if there is a pool over there or not?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Yes, we have a 25-meter indoor pool open during all staffed hours.",
+        "meta": {
+          "escalated": false,
+          "action": null
+        }
+      }
+    ],
+    "escalated": false,
+    "resolved": false,
+    "status": "in_progress"
+  },
+  "d46f8b49": {
+    "id": "d46f8b49",
+    "started_at": "2026-07-26T13:52:15.135067",
+    "ended_at": "2026-07-26T13:53:29.804594",
+    "turns": [
+      {
+        "speaker": "agent",
+        "text": "Thanks for calling Riverside Fitness, this is Ava. How can I help you today?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Can you confirm if there is a pool over there or not?"
+      },
+      {
+        "speaker": "agent",
+        "text": "Yes, we have a 25-meter indoor pool open during all staffed hours.",
+        "meta": {
+          "escalated": false,
+          "action": null
+        }
+      }
+    ],
+    "escalated": false,
+    "resolved": true,
+    "status": "resolved"
+  },
+  "87df84ed": {
+    "id": "87df84ed",
+    "started_at": "2026-07-26T13:54:37.082418",
+    "ended_at": "2026-07-26T13:59:54.063151",
+    "turns": [
+      {
+        "speaker": "agent",
+        "text": "Thanks for calling Riverside Fitness, this is Ava. How can I help you today?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Hello, what is your name?"
+      },
+      {
+        "speaker": "agent",
+        "text": "I don't have that information yet \u2014 let me connect you with our team so they can help directly.",
+        "meta": {
+          "escalated": true,
+          "action": "escalated_no_kb_match"
+        }
+      },
+      {
+        "speaker": "customer",
+        "text": "Hallo... du h\u00e9 b\u00e2y gi\u1eddng\ud574\ufffd chutn"
+      },
+      {
+        "speaker": "agent",
+        "text": "I don't have that information yet \u2014 let me connect you with our team so they can help directly.",
+        "meta": {
+          "escalated": true,
+          "action": "escalated_no_kb_match"
+        }
+      },
+      {
+        "speaker": "customer",
+        "text": "t\u00e4m\u00e4en pari convinced him to let him give up medan"
+      },
+      {
+        "speaker": "agent",
+        "text": "Yes, you can freeze your membership for up to 3 months per year at no extra cost \u2014 just let the front desk know at least 5 days in advance.",
+        "meta": {
+          "escalated": false,
+          "action": null
+        }
+      }
+    ],
+    "escalated": true,
+    "resolved": false,
+    "status": "escalated"
+  },
+  "351dfd2e": {
+    "id": "351dfd2e",
+    "started_at": "2026-07-26T13:59:59.246051",
+    "ended_at": null,
+    "turns": [
+      {
+        "speaker": "agent",
+        "text": "Thanks for calling Riverside Fitness, this is Ava. How can I help you today?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Aici feature s\u0103 te apul\u021bea"
+      },
+      {
+        "speaker": "agent",
+        "text": "I don't have that information yet \u2014 let me connect you with our team so they can help directly.",
+        "meta": {
+          "escalated": true,
+          "action": "escalated_no_kb_match"
+        }
+      },
+      {
+        "speaker": "customer",
+        "text": "Okay"
+      },
+      {
+        "speaker": "agent",
+        "text": "I don't have that information yet \u2014 let me connect you with our team so they can help directly.",
+        "meta": {
+          "escalated": true,
+          "action": "escalated_no_kb_match"
+        }
+      }
+    ],
+    "escalated": true,
+    "resolved": false,
+    "status": "in_progress"
+  },
+  "942da71b": {
+    "id": "942da71b",
+    "started_at": "2026-07-26T14:14:16.866600",
+    "ended_at": "2026-07-26T14:16:01.178967",
+    "turns": [
+      {
+        "speaker": "agent",
+        "text": "\u0ab0\u0abf\u0ab5\u0ab0\u0ab8\u0abe\u0a87\u0aa1 \u0aab\u0abf\u0a9f\u0aa8\u0ac7\u0ab8\u0aa8\u0ac7 \u0a95\u0ac9\u0ab2 \u0a95\u0ab0\u0ab5\u0abe \u0aac\u0aa6\u0ab2 \u0a86\u0aad\u0abe\u0ab0, \u0a86 Ava \u0a9b\u0ac7. \u0a86\u0a9c\u0ac7 \u0ab9\u0ac1\u0a82 \u0aa4\u0aae\u0aa8\u0ac7 \u0a95\u0ac7\u0ab5\u0ac0 \u0ab0\u0ac0\u0aa4\u0ac7 \u0aae\u0aa6\u0aa6 \u0a95\u0ab0\u0ac0 \u0ab6\u0a95\u0ac1\u0a82?"
+      },
+      {
+        "speaker": "customer",
+        "text": "\u0924\u092e\u093e\u0930\u0947 \u0924\u093f\u092f\u093e \u092a\u0942\u0932\u091c \u0939\u0948 \u0915\u0947 \u0917\u093e\u0924\u0940?"
+      },
+      {
+        "speaker": "agent",
+        "text": "\u0aae\u0abe\u0ab0\u0ac0 \u0aaa\u0abe\u0ab8\u0ac7 \u0ab9\u0a9c\u0ac0 \u0ab8\u0ac1\u0aa7\u0ac0 \u0aa4\u0ac7 \u0aae\u0abe\u0ab9\u0abf\u0aa4\u0ac0 \u0aa8\u0aa5\u0ac0 \u2014 \u0a9a\u0abe\u0ab2\u0acb \u0ab9\u0ac1\u0a82 \u0aa4\u0aae\u0aa8\u0ac7 \u0a85\u0aae\u0abe\u0ab0\u0ac0 \u0a9f\u0ac0\u0aae \u0ab8\u0abe\u0aa5\u0ac7 \u0a95\u0aa8\u0ac7\u0a95\u0acd\u0a9f \u0a95\u0ab0\u0ac1\u0a82 \u0a9c\u0ac7\u0aa5\u0ac0 \u0aa4\u0ac7\u0a93 \u0ab8\u0ac0\u0aa7\u0ac0 \u0aae\u0aa6\u0aa6 \u0a95\u0ab0\u0ac0 \u0ab6\u0a95\u0ac7.",
+        "meta": {
+          "escalated": true,
+          "action": "escalated_no_kb_match"
+        }
+      },
+      {
+        "speaker": "customer",
+        "text": "humans."
+      },
+      {
+        "speaker": "agent",
+        "text": "\u0aae\u0abe\u0ab0\u0ac0 \u0aaa\u0abe\u0ab8\u0ac7 \u0ab9\u0a9c\u0ac0 \u0ab8\u0ac1\u0aa7\u0ac0 \u0aa4\u0ac7 \u0aae\u0abe\u0ab9\u0abf\u0aa4\u0ac0 \u0aa8\u0aa5\u0ac0 \u2014 \u0a9a\u0abe\u0ab2\u0acb \u0ab9\u0ac1\u0a82 \u0aa4\u0aae\u0aa8\u0ac7 \u0a85\u0aae\u0abe\u0ab0\u0ac0 \u0a9f\u0ac0\u0aae \u0ab8\u0abe\u0aa5\u0ac7 \u0a95\u0aa8\u0ac7\u0a95\u0acd\u0a9f \u0a95\u0ab0\u0ac1\u0a82 \u0a9c\u0ac7\u0aa5\u0ac0 \u0aa4\u0ac7\u0a93 \u0ab8\u0ac0\u0aa7\u0ac0 \u0aae\u0aa6\u0aa6 \u0a95\u0ab0\u0ac0 \u0ab6\u0a95\u0ac7.",
+        "meta": {
+          "escalated": true,
+          "action": "escalated_no_kb_match"
+        }
+      },
+      {
+        "speaker": "customer",
+        "text": "tamaripa se female coach chae kenna"
+      },
+      {
+        "speaker": "agent",
+        "text": "\u0ab9\u0abe \u0a85\u0aae\u0abe\u0ab0\u0ac0 \u0aaa\u0abe\u0ab8\u0ac7 \u0ab8\u0acd\u0aa4\u0acd\u0ab0\u0ac0 \u0a85\u0aa8\u0ac7 \u0aaa\u0ac1\u0ab0\u0ac1\u0ab7 \u0a95\u0acb\u0a9a \u0a9b\u0ac7 , \u0aa4\u0aae\u0abe\u0ab0\u0ac0 \u0aaa\u0ab8\u0a82\u0aa6\u0a97\u0ac0 \u0ab6\u0ac1\u0a82 \u0a9b\u0ac7 ?",
+        "meta": {
+          "escalated": false,
+          "action": null
+        }
+      },
+      {
+        "speaker": "customer",
+        "text": "So, Maripa's a female star."
+      },
+      {
+        "speaker": "agent",
+        "text": "\u0ab9\u0abe \u0a85\u0aae\u0abe\u0ab0\u0ac0 \u0aaa\u0abe\u0ab8\u0ac7 \u0ab8\u0acd\u0aa4\u0acd\u0ab0\u0ac0 \u0a85\u0aa8\u0ac7 \u0aaa\u0ac1\u0ab0\u0ac1\u0ab7 \u0a95\u0acb\u0a9a \u0a9b\u0ac7 , \u0aa4\u0aae\u0abe\u0ab0\u0ac0 \u0aaa\u0ab8\u0a82\u0aa6\u0a97\u0ac0 \u0ab6\u0ac1\u0a82 \u0a9b\u0ac7 ?",
+        "meta": {
+          "escalated": false,
+          "action": null
+        }
+      },
+      {
+        "speaker": "customer",
+        "text": "\ub9c8\ub9b0\ud517"
+      },
+      {
+        "speaker": "agent",
+        "text": "\u0aae\u0abe\u0ab0\u0ac0 \u0aaa\u0abe\u0ab8\u0ac7 \u0ab9\u0a9c\u0ac0 \u0ab8\u0ac1\u0aa7\u0ac0 \u0aa4\u0ac7 \u0aae\u0abe\u0ab9\u0abf\u0aa4\u0ac0 \u0aa8\u0aa5\u0ac0 \u2014 \u0a9a\u0abe\u0ab2\u0acb \u0ab9\u0ac1\u0a82 \u0aa4\u0aae\u0aa8\u0ac7 \u0a85\u0aae\u0abe\u0ab0\u0ac0 \u0a9f\u0ac0\u0aae \u0ab8\u0abe\u0aa5\u0ac7 \u0a95\u0aa8\u0ac7\u0a95\u0acd\u0a9f \u0a95\u0ab0\u0ac1\u0a82 \u0a9c\u0ac7\u0aa5\u0ac0 \u0aa4\u0ac7\u0a93 \u0ab8\u0ac0\u0aa7\u0ac0 \u0aae\u0aa6\u0aa6 \u0a95\u0ab0\u0ac0 \u0ab6\u0a95\u0ac7.",
+        "meta": {
+          "escalated": true,
+          "action": "escalated_no_kb_match"
+        }
+      }
+    ],
+    "escalated": true,
+    "resolved": false,
+    "status": "escalated"
+  },
+  "0bd2cea2": {
+    "id": "0bd2cea2",
+    "started_at": "2026-07-26T14:27:41.017454",
+    "ended_at": "2026-07-26T14:31:25.181315",
+    "turns": [
+      {
+        "speaker": "agent",
+        "text": "\u0930\u093f\u0935\u0930\u0938\u093e\u0907\u0921 \u092b\u093f\u091f\u0928\u0947\u0938 \u092a\u0930 \u0915\u0949\u0932 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0927\u0928\u094d\u092f\u0935\u093e\u0926, \u092f\u0939 \u0905\u0935\u093e \u0939\u0948\u0964 \u0906\u091c \u092e\u0948\u0902 \u0906\u092a\u0915\u0940 \u092e\u0926\u0926 \u0915\u0930\u0928\u0947 \u092e\u0947\u0902 \u0915\u0948\u0938\u0947 \u0938\u0915\u094d\u0937\u092e \u0939\u0942\u0902?"
+      },
+      {
+        "speaker": "customer",
+        "text": "\u0906\u092a\u0915\u0947 \u092e\u093e\u0939\u093e \u092a\u0940 \u092e\u093f\u0932 \u0915\u094b\u091c \u0939\u0948 \u0915\u093f \u0928\u0939\u0940\u0902 \u0939\u0948"
+      },
+      {
+        "speaker": "agent",
+        "text": "\u092e\u0947\u0930\u0947 \u092a\u093e\u0938 \u0905\u092d\u0940 \u0924\u0915 \u0935\u0939 \u091c\u093e\u0928\u0915\u093e\u0930\u0940 \u0928\u0939\u0940\u0902 \u0939\u0948 - \u0906\u0907\u090f \u092e\u0948\u0902 \u0906\u092a\u0915\u094b \u0939\u092e\u093e\u0930\u0940 \u091f\u0940\u092e \u0938\u0947 \u091c\u094b\u0921\u093c\u0924\u093e \u0939\u0942\u0902 \u0924\u093e\u0915\u093f \u0935\u0947 \u0938\u0940\u0927\u0947 \u092e\u0926\u0926 \u0915\u0930 \u0938\u0915\u0947\u0902\u0964",
+        "meta": {
+          "escalated": true,
+          "action": "escalated_no_kb_match"
+        }
+      },
+      {
+        "speaker": "customer",
+        "text": "Do you have a female coach or a non?"
+      },
+      {
+        "speaker": "agent",
+        "text": "\u0939\u093e\u0901, \u0939\u092e\u093e\u0930\u0947 \u092a\u093e\u0938 \u092e\u0939\u093f\u0932\u093e \u0914\u0930 \u092a\u0941\u0930\u0941\u0937 \u0915\u094b\u091a \u0939\u0948\u0902, \u0906\u092a\u0915\u0940 \u092a\u094d\u0930\u093e\u0925\u092e\u093f\u0915\u0924\u093e \u0915\u094d\u092f\u093e \u0939\u0948?",
+        "meta": {
+          "escalated": false,
+          "action": null
+        }
+      },
+      {
+        "speaker": "customer",
+        "text": "pass, voldeh\u00e4ckier."
+      },
+      {
+        "speaker": "agent",
+        "text": "\u0939\u093e\u0902, \u090f\u0915 \u0926\u093f\u0928 \u0915\u093e \u092a\u093e\u0938 $15 \u0939\u0948 \u0914\u0930 \u0906\u092a\u0915\u094b \u0909\u0938 \u0926\u093f\u0928 \u091c\u093f\u092e \u092b\u094d\u0932\u094b\u0930 \u0914\u0930 \u0938\u092e\u0942\u0939 \u0915\u0915\u094d\u0937\u093e\u0913\u0902 \u0924\u0915 \u092a\u0942\u0930\u0940 \u092a\u0939\u0941\u0902\u091a \u092a\u094d\u0930\u0926\u093e\u0928 \u0915\u0930\u0924\u093e \u0939\u0948\u0964",
+        "meta": {
+          "escalated": false,
+          "action": null
+        }
+      }
+    ],
+    "escalated": true,
+    "resolved": false,
+    "status": "escalated"
+  },
+  "a45f5229": {
+    "id": "a45f5229",
+    "started_at": "2026-07-26T14:31:49.618266",
+    "ended_at": "2026-07-26T14:33:51.999786",
+    "turns": [
+      {
+        "speaker": "agent",
+        "text": "Thanks for calling Riverside Fitness, this is Ava. How can I help you today?"
+      },
+      {
+        "speaker": "customer",
+        "text": "Can you tell me your exit location?"
+      },
+      {
+        "speaker": "agent",
+        "text": "3. Location Information\nAddress\nLevel 2\nSangam Sapphire\nOpposite The Capital\nScience City Road\nSola\nAhmedabad \u2013 380060\nNearby Areas\nScience City\nHebatpur\nGota\nOgnaj\nChanakyapuri\nNirnay Nagar\nChandlodiya\nBhadaj\nShantinagar\nSantej\nThe location is strategically placed on Science City Road, making it accessible to residents of western Ahmedabad.\n4. Working Hours\nStaffed Hours\nMonday \u2013 Saturday\n7:00 AM \u2013 10:00 PM\nSunday\n11:00 AM \u2013 8:00 PM\nMember Access\nMembers receive 24/7 access using their membership credentials, allowing workouts outside staffed hours.",
+        "meta": {
+          "escalated": false,
+          "action": null
+        }
+      },
+      {
+        "speaker": "customer",
+        "text": "Perdam."
+      },
+      {
+        "speaker": "agent",
+        "text": "I don't have that information yet \u2014 let me connect you with our team so they can help directly.",
+        "meta": {
+          "escalated": true,
+          "action": "escalated_no_kb_match"
+        }
+      },
+      {
+        "speaker": "customer",
+        "text": "and you confirm any cardio equipments."
+      },
+      {
+        "speaker": "agent",
+        "text": "5. Facilities\nThe branch provides several convenience-focused amenities.\nGeneral Amenities\nHigh-speed Wi-Fi\nShowers\nParking\nDrinking water\nEasy building access\nVending machine\nAccess to 200+ Plus Fitness clubs\nThe emphasis is on providing a complete fitness environment rather than only exercise equipment.\n6. Cardio Equipment\nAvailable cardio machines include:\nTreadmills\nExercise bikes\nSpin bikes\nEllipticals\nRowing machines\nStair climbers\nJacobs Ladder\nSkiErg\nAirdyne Bike\nThis range supports:\nFat loss\nEndurance training\nHIIT workouts\nCardiovascular conditioning",
+        "meta": {
+          "escalated": false,
+          "action": null
+        }
+      },
+      {
+        "speaker": "customer",
+        "text": "Do you have a personal trainer?"
+      },
+      {
+        "speaker": "agent",
+        "text": "9. Group Fitness\nThe gym offers:\nPlus Fitness group classes\nClasses On Demand\nMaster Classes\nThese sessions cater to members who prefer instructor-led workouts and community-based fitness experiences.\n10. Personal Training\nThe branch employs multiple certified trainers who provide:\nWeight loss programmes\nMuscle gain plans\nStrength coaching\nNutrition guidance\nPersonal workout planning\nTechnique correction\nPersonal training is offered at an additional cost beyond the standard membership.",
+        "meta": {
+          "escalated": false,
+          "action": null
+        }
+      }
+    ],
+    "escalated": true,
+    "resolved": false,
+    "status": "escalated"
+  }
+}

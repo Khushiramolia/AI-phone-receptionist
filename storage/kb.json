@@ -1,0 +1,142 @@
+[
+  {
+    "question": "What are your opening hours?",
+    "answer": "We're open Monday to Friday 6am to 10pm, and weekends 8am to 8pm.",
+    "category": "Hours",
+    "id": "729ca3ce",
+    "source_type": "manual"
+  },
+  {
+    "question": "Do you offer day passes?",
+    "answer": "Yes, a day pass is $15 and gives you full access to the gym floor and group classes that day.",
+    "category": "Pricing",
+    "id": "3f20670d",
+    "source_type": "manual"
+  },
+  {
+    "question": "What membership plans do you have?",
+    "answer": "We offer a monthly plan at $49/month with no contract, and an annual plan at $470/year which works out cheaper per month.",
+    "category": "Pricing",
+    "id": "62dabd40",
+    "source_type": "manual"
+  },
+  {
+    "question": "Is there a pool?",
+    "answer": "Yes, we have a 25-meter indoor pool open during all staffed hours.",
+    "category": "Facilities",
+    "id": "2e24ba25",
+    "source_type": "manual"
+  },
+  {
+    "question": "Can I freeze my membership?",
+    "answer": "Yes, you can freeze your membership for up to 3 months per year at no extra cost \u2014 just let the front desk know at least 5 days in advance.",
+    "category": "Policies",
+    "id": "db553554",
+    "source_type": "manual"
+  },
+  {
+    "question": "What classes do you offer on Saturday mornings?",
+    "answer": "Saturday mornings we run a 7am spin class and an 8:30am beginner yoga class, both in Studio 2.",
+    "category": "Classes",
+    "id": "2e9f9ab3",
+    "source_type": "manual"
+  },
+  {
+    "id": "c0a83a21",
+    "question": "Do have female coach",
+    "answer": "yes we do have  female and male coach , what is your preference ?",
+    "category": "coach",
+    "source_type": "manual"
+  },
+  {
+    "id": "6e3a0ecd",
+    "question": "Plus Fitness.docx (part 1)",
+    "answer": "Plus Fitness 24/7 Science City, Ahmedabad\nComprehensive Business & Facility Analysis",
+    "category": "Plus Fitness.docx",
+    "source_type": "document"
+  },
+  {
+    "id": "16b70876",
+    "question": "Plus Fitness.docx (part 2)",
+    "answer": "1. Executive Summary\nPlus Fitness 24/7 Science City is one of the premium fitness centres located in Science City, Ahmedabad. It is part of the international Plus Fitness franchise, originally established in Australia, and focuses on providing members with round-the-clock access, modern fitness equipment, certified trainers, functional training spaces, and group fitness classes.\nUnlike traditional gyms, Plus Fitness positions itself as a premium lifestyle fitness brand rather than simply a place containing workout equipment. Members receive access to multiple Plus Fitness locations across India, making it attractive for professionals and students who travel frequently.",
+    "category": "Plus Fitness.docx",
+    "source_type": "document"
+  },
+  {
+    "id": "07628c29",
+    "question": "Plus Fitness.docx (part 3)",
+    "answer": "2. Company Background\nBrand\nPlus Fitness 24/7\nAustralian fitness franchise\nOperates hundreds of gyms globally\nExpanding rapidly throughout India\nVision\nWorking Towards A Healthier India\nBusiness Model\nMembership based\nPersonal training services\nGroup classes\nPremium gym experience\nMulti-location access\nThe Science City branch opened in 2021 and was launched as one of the company's key Ahmedabad locations.",
+    "category": "Plus Fitness.docx",
+    "source_type": "document"
+  },
+  {
+    "id": "c0fdb1c2",
+    "question": "Plus Fitness.docx (part 4)",
+    "answer": "3. Location Information\nAddress\nLevel 2\nSangam Sapphire\nOpposite The Capital\nScience City Road\nSola\nAhmedabad \u2013 380060\nNearby Areas\nScience City\nHebatpur\nGota\nOgnaj\nChanakyapuri\nNirnay Nagar\nChandlodiya\nBhadaj\nShantinagar\nSantej\nThe location is strategically placed on Science City Road, making it accessible to residents of western Ahmedabad.\n4. Working Hours\nStaffed Hours\nMonday \u2013 Saturday\n7:00 AM \u2013 10:00 PM\nSunday\n11:00 AM \u2013 8:00 PM\nMember Access\nMembers receive 24/7 access using their membership credentials, allowing workouts outside staffed hours.",
+    "category": "Plus Fitness.docx",
+    "source_type": "document"
+  },
+  {
+    "id": "10f0935d",
+    "question": "Plus Fitness.docx (part 5)",
+    "answer": "5. Facilities\nThe branch provides several convenience-focused amenities.\nGeneral Amenities\nHigh-speed Wi-Fi\nShowers\nParking\nDrinking water\nEasy building access\nVending machine\nAccess to 200+ Plus Fitness clubs\nThe emphasis is on providing a complete fitness environment rather than only exercise equipment.\n6. Cardio Equipment\nAvailable cardio machines include:\nTreadmills\nExercise bikes\nSpin bikes\nEllipticals\nRowing machines\nStair climbers\nJacobs Ladder\nSkiErg\nAirdyne Bike\nThis range supports:\nFat loss\nEndurance training\nHIIT workouts\nCardiovascular conditioning",
+    "category": "Plus Fitness.docx",
+    "source_type": "document"
+  },
+  {
+    "id": "badcc2a1",
+    "question": "Plus Fitness.docx (part 6)",
+    "answer": "7. Strength Training Equipment\nThe gym provides commercial-grade resistance equipment including:\nFree Weights\nBarbells\nOlympic bars\nDumbbells\nMachines\nPlate-loaded machines\nPin-loaded machines\nStrength Area\nLifting platforms\nSuitable for:\nBodybuilding\nPowerlifting\nStrength development\nMuscle hypertrophy\n8. Functional Training Zone\nThe functional area includes:\nTRX suspension trainers\nBattle ropes\nKettlebells\nMedicine balls\nSlam balls\nBOSU balls\nBoxing bags\nFunctional training racks\nSled track\nDesigned for:\nAthletic conditioning\nMobility\nCross-training\nCore stability\nSports performance",
+    "category": "Plus Fitness.docx",
+    "source_type": "document"
+  },
+  {
+    "id": "d717937e",
+    "question": "Plus Fitness.docx (part 7)",
+    "answer": "9. Group Fitness\nThe gym offers:\nPlus Fitness group classes\nClasses On Demand\nMaster Classes\nThese sessions cater to members who prefer instructor-led workouts and community-based fitness experiences.\n10. Personal Training\nThe branch employs multiple certified trainers who provide:\nWeight loss programmes\nMuscle gain plans\nStrength coaching\nNutrition guidance\nPersonal workout planning\nTechnique correction\nPersonal training is offered at an additional cost beyond the standard membership.",
+    "category": "Plus Fitness.docx",
+    "source_type": "document"
+  },
+  {
+    "id": "17959a41",
+    "question": "Plus Fitness.docx (part 8)",
+    "answer": "11. Staff Structure\nThe branch includes:\nFranchise owners\nGym manager\nFloor manager\nSales representative\nMultiple personal trainers\nThis organisational structure supports customer service, operations, and personalised coaching.\n12. Membership Benefits\nMembers receive:\n24\u00d77 gym access\nAccess to 200+ Plus Fitness clubs\nModern equipment\nProfessional trainers\nFunctional training zone\nGroup classes\nMobile fitness app\nSecure environment",
+    "category": "Plus Fitness.docx",
+    "source_type": "document"
+  },
+  {
+    "id": "15f764ca",
+    "question": "Plus Fitness.docx (part 9)",
+    "answer": "13. Target Customers\nPrimary audience includes:\nStudents\nFlexible workout timings\nAffordable compared with luxury clubs\nWorking Professionals\nBefore-office workouts\nLate-night access\nWeekend flexibility\nFitness Enthusiasts\nAdvanced equipment\nStrength training\nFunctional fitness\nBeginners\nTrainer support\nGuided workouts\nPersonal training options\n14. Competitive Advantages\nCompared with many local gyms, Plus Fitness offers:\n24/7 access\nInternational brand reputation\nHigh-quality equipment\nMulti-club membership\nClean facilities\nFunctional training space\nCertified trainers\nConsistent branding and service standards",
+    "category": "Plus Fitness.docx",
+    "source_type": "document"
+  },
+  {
+    "id": "ffbd429e",
+    "question": "Plus Fitness.docx (part 10)",
+    "answer": "15. Customer Feedback\nCommunity reviews highlight several strengths:\nPositive\nClean environment\nWide equipment selection\nPremium ambience\nFriendly staff\nGood location\nSuitable for serious fitness enthusiasts\nCommon Criticisms\nHigher membership cost than budget gyms\nCan become crowded during peak hours\nSome members feel the floor space is compact for the amount of equipment\nThese observations are consistent across local community discussions and fitness review platforms.",
+    "category": "Plus Fitness.docx",
+    "source_type": "document"
+  },
+  {
+    "id": "3d38bb4f",
+    "question": "Plus Fitness.docx (part 11)",
+    "answer": "16. SWOT Analysis\nStrengths\nInternational franchise\n24-hour access\nModern equipment\nFunctional training area\nMultiple branch access\nCertified trainers\nPremium brand image\nWeaknesses\nPremium pricing\nLimited floor area during busy hours\nAdditional charges for personal training\nOpportunities\nCorporate fitness programmes\nAI-based fitness tracking\nNutrition coaching\nCommunity fitness events\nDigital member engagement\nThreats\nIncreasing competition from premium gyms\nLow-cost local gyms\nHome fitness solutions\nFitness subscription apps",
+    "category": "Plus Fitness.docx",
+    "source_type": "document"
+  },
+  {
+    "id": "acad0bd1",
+    "question": "Plus Fitness.docx (part 12)",
+    "answer": "17. Ideal User Personas\nCorporate Professional\nNeeds flexible workout hours before or after work.\nValues cleanliness, security, and premium equipment.\nCollege Student\nSeeks access to quality equipment and structured guidance.\nBenefits from group classes and trainer support.\nStrength Athlete\nPrioritises free weights, lifting platforms, and resistance machines.\nAppreciates functional training facilities.\nGeneral Fitness Enthusiast\nWants a combination of cardio, strength, and recovery options in one location.",
+    "category": "Plus Fitness.docx",
+    "source_type": "document"
+  },
+  {
+    "id": "4c2492da",
+    "question": "Plus Fitness.docx (part 13)",
+    "answer": "18. Conclusion\nPlus Fitness 24/7 Science City positions itself as a premium fitness destination in Ahmedabad by combining 24-hour access, international brand standards, comprehensive training equipment, and professional coaching. Its strengths lie in flexibility, facility quality, and a broad range of training options, making it well suited to professionals, students, and serious fitness enthusiasts. While the membership cost is higher than many local gyms and peak-hour crowding can be a drawback, the overall value proposition remains strong for members seeking a reliable, modern, and well-equipped fitness environment.",
+    "category": "Plus Fitness.docx",
+    "source_type": "document"
+  }
+]

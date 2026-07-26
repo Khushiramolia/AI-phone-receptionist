@@ -1,0 +1,20 @@
+# Core API
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+pydantic==2.9.2
+
+# Knowledge base retrieval (offline TF-IDF, no model download)
+scikit-learn==1.5.2
+
+# Document upload support (PDF, Word)
+pypdf==5.1.0
+python-docx==1.1.2
+
+# Speech-to-text (customer voice turns)
+openai-whisper
+
+# Text-to-speech (agent replies)
+# - macOS built-in `say` covers English + Hindi (Lekha) voices, fully offline
+# - gTTS (Google) covers Gujarati and an alternate Hindi voice; needs internet
+gtts==2.5.3

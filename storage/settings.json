@@ -1,0 +1,22 @@
+{
+  "business_name": "Riverside Fitness",
+  "agent_name": "Ava",
+  "greeting": "Thanks for calling Riverside Fitness, this is Ava. How can I help you today?",
+  "voice_id": "en_karen",
+  "escalation_keywords": [
+    "complaint",
+    "refund",
+    "injury",
+    "hurt",
+    "emergency",
+    "accident",
+    "lawsuit",
+    "sue",
+    "angry",
+    "manager",
+    "cancel my membership",
+    "dispute"
+  ],
+  "language": "en",
+  "fallback_message": "I don't have that information yet \u2014 let me connect you with our team so they can help directly."
+}

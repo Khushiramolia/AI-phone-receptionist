@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FrontDesk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B0C10;
+    --sidebar: #0D0E12;
+    --panel: #14161B;
+    --panel-2: #1B1E25;
+    --border: #262A33;
+    --text: #ECEAE4;
+    --text-dim: #8A8F9C;
+    --accent: #7C6CFF;
+    --accent-soft: rgba(124,108,255,0.14);
+    --mint: #6EE7B7;
+    --amber: #FBBF66;
+    --danger: #F87171;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; height: 100vh; overflow: hidden; }
+
+  .app { display: grid; grid-template-columns: 236px 1fr; height: 100vh; }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar { background: var(--sidebar); border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 20px 14px; }
+  .logo { display: flex; align-items: center; gap: 9px; padding: 6px 10px 6px 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px; }
+  .logo .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+  .logo-sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-dim); padding: 0 10px 20px 10px; }
+
+  .nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--text-dim); cursor: pointer; margin-bottom: 2px; }
+  .nav-item svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .nav-item:hover { background: var(--panel); color: var(--text); }
+  .nav-item.active { background: var(--panel); color: var(--text); }
+  .nav-item.active svg { stroke: var(--accent); }
+
+  .sidebar-footer { margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--text-dim); padding: 10px; border-top: 1px solid var(--border); }
+
+  /* ---------- Main ---------- */
+  .main { display: flex; flex-direction: column; overflow: hidden; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 18px 28px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .topbar h1 { font-family: 'Space Grotesk', sans-serif; font-size: 17px; margin: 0; }
+  .badge { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--text-dim); border: 1px solid var(--border); padding: 4px 10px; border-radius: 20px; }
+
+  .view { display: none; flex: 1; overflow-y: auto; padding: 28px; }
+  .view.active { display: flex; flex-direction: column; }
+
+  button { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13.5px; border: none; border-radius: 8px; padding: 10px 18px; cursor: pointer; }
+  .btn-primary { background: var(--accent); color: #0B0716; }
+  .btn-primary:hover { filter: brightness(1.1); }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-secondary { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--accent); }
+  .btn-ghost { background: transparent; color: var(--text-dim); border: 1px solid var(--border); padding: 6px 12px; font-size: 12px; }
+  .btn-ghost:hover { color: var(--text); border-color: var(--accent); }
+
+  input[type="text"], textarea, select {
+    width: 100%; background: var(--panel-2); border: 1px solid var(--border); color: var(--text);
+    padding: 10px 12px; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 13.5px;
+  }
+  label { display: block; font-size: 12.5px; color: var(--text-dim); margin-bottom: 6px; margin-top: 14px; }
+  label:first-of-type { margin-top: 0; }
+
+  /* ================= TEST AGENT VIEW ================= */
+  .call-card {
+    max-width: 620px; background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
+    display: flex; flex-direction: column; flex: 1; overflow: hidden;
+  }
+  .call-header { display: flex; align-items: center; gap: 12px; padding: 18px 20px; border-bottom: 1px solid var(--border); }
+  .agent-avatar {
+    width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #4C3FCB);
+    display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; flex-shrink: 0; position: relative;
+  }
+  .agent-avatar.live::after {
+    content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid var(--mint); animation: ring 1.6s ease-out infinite;
+  }
+  @keyframes ring { 0% { opacity: 0.8; transform: scale(0.9); } 100% { opacity: 0; transform: scale(1.35); } }
+  .call-header .info .aname { font-weight: 600; font-size: 14.5px; }
+  .call-header .info .bname { font-size: 12px; color: var(--text-dim); }
+  .call-status { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 4px 10px; border-radius: 20px; border: 1px solid var(--border); color: var(--text-dim); }
+  .call-status.live { color: var(--mint); border-color: rgba(110,231,183,0.4); background: rgba(110,231,183,0.08); }
+
+  .transcript { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+  .bubble { max-width: 78%; padding: 10px 14px; border-radius: 12px; font-size: 13.5px; line-height: 1.5; }
+  .bubble.agent { background: var(--panel-2); align-self: flex-start; border-bottom-left-radius: 3px; }
+  .bubble.customer { background: var(--accent); color: #0B0716; align-self: flex-end; border-bottom-right-radius: 3px; }
+
+  .idle-hint { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: var(--text-dim); font-size: 13px; text-align: center; padding: 30px; }
+
+  .call-input-row { display: flex; align-items: center; gap: 8px; padding: 14px 16px; border-top: 1px solid var(--border); }
+  .call-input-row input[type="text"] { flex: 1; }
+  .mic-toggle {
+    width: 38px; height: 38px; border-radius: 50%; background: var(--panel-2); border: 1px solid var(--border);
+    color: var(--text); display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; font-size: 15px;
+  }
+  .mic-toggle.recording { background: var(--danger); color: #1A0707; animation: pulse 1.2s infinite; border-color: transparent; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(248,113,113,.5);} 70%{box-shadow:0 0 0 12px rgba(248,113,113,0);} 100%{box-shadow:0 0 0 0 rgba(248,113,113,0);} }
+
+  .outcome-banner { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-top: 1px solid var(--border); font-size: 12.5px; }
+  .outcome-banner.resolved { color: var(--mint); }
+  .outcome-banner.escalated { color: var(--amber); }
+
+  /* ================= KNOWLEDGE BASE VIEW ================= */
+  .kb-toolbar { display: flex; gap: 10px; margin-bottom: 18px; max-width: 900px; }
+  .kb-toolbar input { flex: 1; }
+  .kb-list { display: flex; flex-direction: column; gap: 10px; max-width: 900px; }
+  .kb-card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; display: flex; gap: 14px; align-items: flex-start; }
+  .kb-card .cat-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); background: var(--accent-soft); padding: 3px 8px; border-radius: 5px; flex-shrink: 0; margin-top: 2px; }
+  .kb-card .kb-body { flex: 1; }
+  .kb-card .kb-q { font-weight: 600; font-size: 13.5px; margin-bottom: 4px; }
+  .kb-card .kb-a { font-size: 12.5px; color: var(--text-dim); line-height: 1.5; }
+  .kb-card .kb-actions { display: flex; gap: 6px; flex-shrink: 0; }
+
+  /* ================= CALL LOGS VIEW ================= */
+  .logs-layout { display: grid; grid-template-columns: 340px 1fr; gap: 18px; flex: 1; max-width: 1100px; min-height: 0; }
+  .logs-list { overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding-right: 4px; }
+  .log-row { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; cursor: pointer; }
+  .log-row:hover { border-color: var(--accent); }
+  .log-row.selected { border-color: var(--accent); background: var(--panel-2); }
+  .log-row .lr-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .log-row .lr-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim); }
+  .log-row .lr-meta { font-size: 11.5px; color: var(--text-dim); }
+
+  .status-pill { font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 3px 9px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .status-pill.resolved { color: var(--mint); background: rgba(110,231,183,0.1); }
+  .status-pill.escalated { color: var(--amber); background: rgba(251,191,102,0.1); }
+  .status-pill.in_progress { color: var(--text-dim); background: var(--panel-2); }
+
+  .log-detail { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; overflow-y: auto; }
+  .log-detail .transcript { padding: 0; margin-top: 14px; }
+
+  /* ================= SETTINGS VIEW ================= */
+  .settings-form { max-width: 560px; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+  .chip-input { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px; background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; min-height: 42px; }
+  .chip { font-family: 'JetBrains Mono', monospace; font-size: 11px; background: var(--accent-soft); color: var(--accent); padding: 4px 8px; border-radius: 6px; display: flex; align-items: center; gap: 6px; }
+  .chip .x { cursor: pointer; opacity: 0.7; }
+  .chip .x:hover { opacity: 1; }
+  .chip-input input { border: none; background: transparent; flex: 1; min-width: 120px; padding: 4px; }
+
+  /* ---------- Modal ---------- */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(6,7,9,0.72); align-items: center; justify-content: center; z-index: 50; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; width: 460px; max-width: 92vw; padding: 24px; }
+  .modal h2 { font-family: 'Space Grotesk', sans-serif; font-size: 16px; margin: 0 0 16px 0; }
+  .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
+
+  .status-text { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; margin-top: 10px; color: var(--text-dim); }
+  .status-text.error { color: var(--danger); }
+  .status-text.ok { color: var(--mint); }
+
+  .empty-hint { color: var(--text-dim); font-size: 13px; }
+  audio.hidden-player { display: none; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <div class="sidebar">
+    <div class="logo"><span class="dot"></span> FrontDesk</div>
+    <div class="logo-sub">AI phone agent builder</div>
+
+    <div class="nav-item active" data-view="agent">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+      Test Agent
+    </div>
+    <div class="nav-item" data-view="kb">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20"/></svg>
+      Knowledge Base
+    </div>
+    <div class="nav-item" data-view="logs">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+      Call Logs
+    </div>
+    <div class="nav-item" data-view="settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Settings
+    </div>
+
+    <div class="sidebar-footer">local · not deployed</div>
+  </div>
+
+  <div class="main">
+    <div class="topbar">
+      <h1 id="viewTitle">Test Agent</h1>
+      <div class="badge">FrontDesk v0.1</div>
+    </div>
+
+    <!-- ============ TEST AGENT VIEW ============ -->
+    <div class="view active" id="view-agent">
+      <div class="call-card">
+        <div class="call-header">
+          <div class="agent-avatar" id="agentAvatar">A</div>
+          <div class="info">
+            <div class="aname" id="agentNameLabel">Agent</div>
+            <div class="bname" id="businessNameLabel">Business</div>
+          </div>
+          <div class="call-status" id="callStatus">not connected</div>
+        </div>
+
+        <div class="transcript" id="transcript">
+          <div class="idle-hint" id="idleHint">
+            <div>Simulate an inbound customer call — the agent will answer using your knowledge base, book classes, or escalate when needed.</div>
+            <button class="btn-primary" id="startCallBtn">Start test call</button>
+          </div>
+        </div>
+
+        <div class="call-input-row" id="inputRow" style="display:none;">
+          <button class="mic-toggle" id="micToggle">●</button>
+          <input type="text" id="turnText" placeholder="Type what the customer says…" />
+          <button class="btn-primary" id="sendTurnBtn">Send</button>
+        </div>
+
+        <div id="outcomeBanner"></div>
+        <div style="padding: 0 16px 16px 16px; display:none;" id="endCallWrap">
+          <button class="btn-secondary" id="endCallBtn" style="width:100%;">End call</button>
+        </div>
+      </div>
+      <audio class="hidden-player" id="hiddenPlayer"></audio>
+    </div>
+
+    <!-- ============ KNOWLEDGE BASE VIEW ============ -->
+    <div class="view" id="view-kb">
+      <div class="kb-toolbar">
+        <input type="text" id="kbSearch" placeholder="Search questions…" />
+        <button class="btn-secondary" id="uploadDocBtn">Upload document</button>
+        <input type="file" id="docFileInput" accept=".pdf,.docx,.txt,.md" style="display:none;" />
+        <button class="btn-primary" id="addKbBtn">+ Add entry</button>
+      </div>
+      <div class="status-text" id="uploadStatus" style="margin-bottom:12px;"></div>
+      <div class="kb-list" id="kbList"></div>
+    </div>
+
+    <!-- ============ CALL LOGS VIEW ============ -->
+    <div class="view" id="view-logs">
+      <div class="logs-layout">
+        <div class="logs-list" id="logsList"></div>
+        <div class="log-detail" id="logDetail">
+          <div class="empty-hint">Select a call to view its transcript.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SETTINGS VIEW ============ -->
+    <div class="view" id="view-settings">
+      <div class="settings-form">
+        <label>Business name</label>
+        <input type="text" id="setBusinessName" />
+
+        <label>Agent name</label>
+        <input type="text" id="setAgentName" />
+
+        <label>Greeting message</label>
+        <textarea id="setGreeting" rows="2"></textarea>
+
+        <label>Agent voice</label>
+        <select id="setVoice"></select>
+        <div class="status-text" id="voiceHint"></div>
+        <button class="btn-secondary" id="previewVoiceBtn" style="margin-top:10px;">Preview voice</button>
+        <audio id="voicePreviewPlayer" style="display:none;"></audio>
+
+        <label>Fallback message (used when nothing matches)</label>
+        <textarea id="setFallback" rows="2"></textarea>
+
+        <label>Escalation keywords</label>
+        <div class="chip-input" id="chipInput">
+          <input type="text" id="chipEntry" placeholder="Type a keyword, press Enter…" />
+        </div>
+
+        <button class="btn-primary" id="saveSettingsBtn" style="margin-top:18px;">Save settings</button>
+        <div class="status-text" id="settingsStatus"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ KB Add/Edit Modal ============ -->
+<div class="modal-overlay" id="kbModalOverlay">
+  <div class="modal">
+    <h2 id="kbModalTitle">Add knowledge base entry</h2>
+    <label>Category</label>
+    <input type="text" id="kbCategory" placeholder="e.g. Pricing, Hours, Policies" />
+    <label>Question</label>
+    <input type="text" id="kbQuestion" placeholder="What a customer might ask" />
+    <label>Answer</label>
+    <textarea id="kbAnswer" rows="3" placeholder="How the agent should respond"></textarea>
+    <div class="modal-actions">
+      <button class="btn-secondary" id="kbCancelBtn">Cancel</button>
+      <button class="btn-primary" id="kbSaveBtn">Save entry</button>
+    </div>
+    <div class="status-text" id="kbModalStatus"></div>
+  </div>
+</div>
+
+<script>
+const API = "http://localhost:8000";
+let currentCallId = null;
+let currentSettings = null;
+let escalationKeywords = [];
+let editingKbId = null;
+
+/* ---------- Nav ---------- */
+document.querySelectorAll(".nav-item").forEach(item => {
+  item.addEventListener("click", () => {
+    document.querySelectorAll(".nav-item").forEach(i => i.classList.remove("active"));
+    document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
+    item.classList.add("active");
+    document.getElementById(`view-${item.dataset.view}`).classList.add("active");
+    const titles = { agent: "Test Agent", kb: "Knowledge Base", logs: "Call Logs", settings: "Settings" };
+    document.getElementById("viewTitle").textContent = titles[item.dataset.view];
+    if (item.dataset.view === "kb") loadKb();
+    if (item.dataset.view === "logs") loadLogs();
+    if (item.dataset.view === "settings") loadSettings();
+  });
+});
+
+/* ================= SETTINGS ================= */
+let voiceCatalog = [];
+
+async function loadVoiceCatalog() {
+  const res = await fetch(`${API}/api/voices`);
+  const data = await res.json();
+  voiceCatalog = data.voices;
+
+  const select = document.getElementById("setVoice");
+  select.innerHTML = "";
+  const byLanguage = {};
+  voiceCatalog.forEach(v => {
+    if (!byLanguage[v.language]) byLanguage[v.language] = [];
+    byLanguage[v.language].push(v);
+  });
+  Object.entries(byLanguage).forEach(([language, voices]) => {
+    const group = document.createElement("optgroup");
+    group.label = language;
+    voices.forEach(v => {
+      const opt = document.createElement("option");
+      opt.value = v.id;
+      opt.textContent = v.available ? v.label : `${v.label} (not installed)`;
+      group.appendChild(opt);
+    });
+    select.appendChild(group);
+  });
+}
+
+document.getElementById("setVoice").addEventListener("change", () => {
+  const voice = voiceCatalog.find(v => v.id === document.getElementById("setVoice").value);
+  const hint = document.getElementById("voiceHint");
+  if (!voice) { hint.textContent = ""; return; }
+  if (voice.engine === "gtts") {
+    hint.textContent = "This voice uses Google's online engine — requires an internet connection.";
+    hint.className = "status-text";
+  } else if (!voice.available) {
+    hint.textContent = "Not installed yet — add it via System Settings → Accessibility → Spoken Content → Manage Voices, then refresh.";
+    hint.className = "status-text error";
+  } else {
+    hint.textContent = "Offline voice — works without internet.";
+    hint.className = "status-text ok";
+  }
+});
+
+document.getElementById("previewVoiceBtn").addEventListener("click", async () => {
+  const voiceId = document.getElementById("setVoice").value;
+  const btn = document.getElementById("previewVoiceBtn");
+  const player = document.getElementById("voicePreviewPlayer");
+  btn.disabled = true;
+  btn.textContent = "Generating…";
+  try {
+    const form = new FormData();
+    form.append("voice_id", voiceId);
+    const res = await fetch(`${API}/api/voices/preview`, { method: "POST", body: form });
+    if (!res.ok) throw new Error((await res.json()).detail || "Preview failed.");
+    const data = await res.json();
+    player.src = API + data.audio_url;
+    player.play();
+  } catch (err) {
+    document.getElementById("voiceHint").textContent = err.message;
+    document.getElementById("voiceHint").className = "status-text error";
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Preview voice";
+  }
+});
+
+async function loadSettings() {
+  if (voiceCatalog.length === 0) await loadVoiceCatalog();
+  const res = await fetch(`${API}/api/settings`);
+  currentSettings = await res.json();
+  document.getElementById("setBusinessName").value = currentSettings.business_name;
+  document.getElementById("setAgentName").value = currentSettings.agent_name;
+  document.getElementById("setGreeting").value = currentSettings.greeting;
+  document.getElementById("setFallback").value = currentSettings.fallback_message;
+  document.getElementById("setVoice").value = currentSettings.voice_id || "en_samantha";
+  escalationKeywords = [...(currentSettings.escalation_keywords || [])];
+  renderChips();
+  updateAgentHeader();
+}
+
+function updateAgentHeader() {
+  if (!currentSettings) return;
+  document.getElementById("agentNameLabel").textContent = currentSettings.agent_name;
+  document.getElementById("businessNameLabel").textContent = currentSettings.business_name;
+  document.getElementById("agentAvatar").textContent = currentSettings.agent_name.slice(0, 1).toUpperCase();
+}
+
+function renderChips() {
+  const container = document.getElementById("chipInput");
+  container.querySelectorAll(".chip").forEach(c => c.remove());
+  const entryInput = document.getElementById("chipEntry");
+  escalationKeywords.forEach((kw, idx) => {
+    const chip = document.createElement("span");
+    chip.className = "chip";
+    chip.innerHTML = `${kw} <span class="x" data-idx="${idx}">✕</span>`;
+    container.insertBefore(chip, entryInput);
+  });
+  container.querySelectorAll(".x").forEach(x => {
+    x.addEventListener("click", () => {
+      escalationKeywords.splice(parseInt(x.dataset.idx), 1);
+      renderChips();
+    });
+  });
+}
+
+document.getElementById("chipEntry").addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && e.target.value.trim()) {
+    escalationKeywords.push(e.target.value.trim());
+    e.target.value = "";
+    renderChips();
+  }
+});
+
+document.getElementById("saveSettingsBtn").addEventListener("click", async () => {
+  const statusEl = document.getElementById("settingsStatus");
+  const updated = {
+    ...currentSettings,
+    business_name: document.getElementById("setBusinessName").value.trim(),
+    agent_name: document.getElementById("setAgentName").value.trim(),
+    greeting: document.getElementById("setGreeting").value.trim(),
+    fallback_message: document.getElementById("setFallback").value.trim(),
+    voice_id: document.getElementById("setVoice").value,
+    escalation_keywords: escalationKeywords,
+  };
+  try {
+    const res = await fetch(`${API}/api/settings`, {
+      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(updated),
+    });
+    currentSettings = await res.json();
+    statusEl.textContent = "Saved.";
+    statusEl.className = "status-text ok";
+    updateAgentHeader();
+  } catch (err) {
+    statusEl.textContent = "Failed to save.";
+    statusEl.className = "status-text error";
+  }
+});
+
+/* ================= KNOWLEDGE BASE ================= */
+async function loadKb() {
+  const res = await fetch(`${API}/api/kb`);
+  const data = await res.json();
+  renderKbList(data.entries);
+}
+
+function renderKbList(entries) {
+  const list = document.getElementById("kbList");
+  const query = document.getElementById("kbSearch").value.toLowerCase();
+  const filtered = entries.filter(e =>
+    !query || e.question.toLowerCase().includes(query) || e.answer.toLowerCase().includes(query) || e.category.toLowerCase().includes(query)
+  );
+  list.innerHTML = "";
+  if (filtered.length === 0) {
+    list.innerHTML = '<div class="empty-hint">No entries match your search.</div>';
+    return;
+  }
+
+  const manualEntries = filtered.filter(e => e.source_type !== "document");
+  const docEntries = filtered.filter(e => e.source_type === "document");
+
+  // Group document chunks by filename (category) into one card each.
+  const docGroups = {};
+  docEntries.forEach(e => {
+    if (!docGroups[e.category]) docGroups[e.category] = [];
+    docGroups[e.category].push(e);
+  });
+
+  Object.entries(docGroups).forEach(([filename, chunks]) => {
+    const preview = chunks[0].answer.slice(0, 140);
+    const card = document.createElement("div");
+    card.className = "kb-card";
+    card.innerHTML = `
+      <div class="cat-tag">📄 doc</div>
+      <div class="kb-body">
+        <div class="kb-q">${filename}</div>
+        <div class="kb-a">${chunks.length} chunk${chunks.length === 1 ? "" : "s"} indexed — "${preview}${chunks[0].answer.length > 140 ? "…" : ""}"</div>
+      </div>
+      <div class="kb-actions">
+        <button class="btn-ghost del-doc-btn" data-filename="${filename}">Delete</button>
+      </div>`;
+    list.appendChild(card);
+  });
+
+  manualEntries.forEach(e => {
+    const card = document.createElement("div");
+    card.className = "kb-card";
+    card.innerHTML = `
+      <div class="cat-tag">${e.category}</div>
+      <div class="kb-body">
+        <div class="kb-q">${e.question}</div>
+        <div class="kb-a">${e.answer}</div>
+      </div>
+      <div class="kb-actions">
+        <button class="btn-ghost edit-btn" data-id="${e.id}">Edit</button>
+        <button class="btn-ghost del-btn" data-id="${e.id}">Delete</button>
+      </div>`;
+    list.appendChild(card);
+  });
+
+  list.querySelectorAll(".edit-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const entry = entries.find(e => e.id === btn.dataset.id);
+      openKbModal(entry);
+    });
+  });
+  list.querySelectorAll(".del-btn").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      await fetch(`${API}/api/kb/${btn.dataset.id}`, { method: "DELETE" });
+      loadKb();
+    });
+  });
+  list.querySelectorAll(".del-doc-btn").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      await fetch(`${API}/api/kb/document/${encodeURIComponent(btn.dataset.filename)}`, { method: "DELETE" });
+      loadKb();
+    });
+  });
+}
+
+/* ---- Document upload ---- */
+document.getElementById("uploadDocBtn").addEventListener("click", () => {
+  document.getElementById("docFileInput").click();
+});
+
+document.getElementById("docFileInput").addEventListener("change", async () => {
+  const fileInput = document.getElementById("docFileInput");
+  const file = fileInput.files[0];
+  const statusEl = document.getElementById("uploadStatus");
+  if (!file) return;
+
+  const form = new FormData();
+  form.append("document", file);
+
+  statusEl.textContent = `Uploading and indexing ${file.name}…`;
+  statusEl.className = "status-text";
+
+  try {
+    const res = await fetch(`${API}/api/kb/upload`, { method: "POST", body: form });
+    if (!res.ok) throw new Error((await res.json()).detail || "Upload failed.");
+    const data = await res.json();
+    statusEl.textContent = `Added ${data.chunks_added} chunks from ${data.filename}.`;
+    statusEl.className = "status-text ok";
+    loadKb();
+  } catch (err) {
+    statusEl.textContent = err.message;
+    statusEl.className = "status-text error";
+  } finally {
+    fileInput.value = "";
+  }
+});
+
+document.getElementById("kbSearch").addEventListener("input", loadKb);
+
+function openKbModal(entry) {
+  editingKbId = entry ? entry.id : null;
+  document.getElementById("kbModalTitle").textContent = entry ? "Edit entry" : "Add knowledge base entry";
+  document.getElementById("kbCategory").value = entry ? entry.category : "";
+  document.getElementById("kbQuestion").value = entry ? entry.question : "";
+  document.getElementById("kbAnswer").value = entry ? entry.answer : "";
+  document.getElementById("kbModalStatus").textContent = "";
+  document.getElementById("kbModalOverlay").classList.add("open");
+}
+document.getElementById("addKbBtn").addEventListener("click", () => openKbModal(null));
+document.getElementById("kbCancelBtn").addEventListener("click", () => document.getElementById("kbModalOverlay").classList.remove("open"));
+
+document.getElementById("kbSaveBtn").addEventListener("click", async () => {
+  const category = document.getElementById("kbCategory").value.trim() || "General";
+  const question = document.getElementById("kbQuestion").value.trim();
+  const answer = document.getElementById("kbAnswer").value.trim();
+  const statusEl = document.getElementById("kbModalStatus");
+  if (!question || !answer) { statusEl.textContent = "Question and answer are required."; statusEl.className = "status-text error"; return; }
+
+  const payload = { question, answer, category };
+  try {
+    if (editingKbId) {
+      await fetch(`${API}/api/kb/${editingKbId}`, { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+    } else {
+      await fetch(`${API}/api/kb`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+    }
+    document.getElementById("kbModalOverlay").classList.remove("open");
+    loadKb();
+  } catch (err) {
+    statusEl.textContent = "Failed to save entry.";
+    statusEl.className = "status-text error";
+  }
+});
+
+/* ================= CALL LOGS ================= */
+async function loadLogs() {
+  const res = await fetch(`${API}/api/calls`);
+  const data = await res.json();
+  const list = document.getElementById("logsList");
+  list.innerHTML = "";
+  if (data.calls.length === 0) {
+    list.innerHTML = '<div class="empty-hint">No calls yet — try one in Test Agent.</div>';
+    return;
+  }
+  data.calls.forEach(call => {
+    const row = document.createElement("div");
+    row.className = "log-row";
+    const date = new Date(call.started_at).toLocaleString();
+    const customerTurns = call.turns.filter(t => t.speaker === "customer").length;
+    row.innerHTML = `
+      <div class="lr-top">
+        <span class="lr-date">${date}</span>
+        <span class="status-pill ${call.status}">${call.status.replace("_", " ")}</span>
+      </div>
+      <div class="lr-meta">${customerTurns} customer turn${customerTurns === 1 ? "" : "s"}</div>`;
+    row.addEventListener("click", () => {
+      document.querySelectorAll(".log-row").forEach(r => r.classList.remove("selected"));
+      row.classList.add("selected");
+      renderLogDetail(call);
+    });
+    list.appendChild(row);
+  });
+}
+
+function renderLogDetail(call) {
+  const detail = document.getElementById("logDetail");
+  const date = new Date(call.started_at).toLocaleString();
+  detail.innerHTML = `
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div style="font-weight:600; font-size:14.5px;">Call ${call.id}</div>
+      <span class="status-pill ${call.status}">${call.status.replace("_", " ")}</span>
+    </div>
+    <div class="lr-date" style="margin-top:4px;">${date}</div>
+    <div class="transcript" id="detailTranscript"></div>`;
+  const t = document.getElementById("detailTranscript");
+  call.turns.forEach(turn => {
+    const bubble = document.createElement("div");
+    bubble.className = `bubble ${turn.speaker === "agent" ? "agent" : "customer"}`;
+    bubble.textContent = turn.text;
+    t.appendChild(bubble);
+  });
+}
+
+/* ================= TEST AGENT ================= */
+const transcriptEl = document.getElementById("transcript");
+const hiddenPlayer = document.getElementById("hiddenPlayer");
+
+function addBubble(speaker, text) {
+  const bubble = document.createElement("div");
+  bubble.className = `bubble ${speaker}`;
+  bubble.textContent = text;
+  transcriptEl.appendChild(bubble);
+  transcriptEl.scrollTop = transcriptEl.scrollHeight;
+  return bubble;
+}
+
+function playAudio(url) {
+  hiddenPlayer.src = API + url;
+  hiddenPlayer.play().catch(() => {});
+}
+
+document.getElementById("startCallBtn").addEventListener("click", async () => {
+  transcriptEl.innerHTML = "";
+  const res = await fetch(`${API}/api/calls/start`, { method: "POST" });
+  const data = await res.json();
+  currentCallId = data.call_id;
+
+  addBubble("agent", data.greeting_text);
+  playAudio(data.audio_url);
+
+  document.getElementById("inputRow").style.display = "flex";
+  document.getElementById("endCallWrap").style.display = "block";
+  document.getElementById("outcomeBanner").innerHTML = "";
+  document.getElementById("callStatus").textContent = "live";
+  document.getElementById("callStatus").classList.add("live");
+  document.getElementById("agentAvatar").classList.add("live");
+});
+
+async function sendTurn({ text, audioBlob }) {
+  if (!currentCallId) return;
+  const form = new FormData();
+  if (audioBlob) {
+    form.append("audio", audioBlob, "turn.webm");
+  } else {
+    form.append("text", text);
+  }
+  if (text) addBubble("customer", text);
+
+  const res = await fetch(`${API}/api/calls/${currentCallId}/turn`, { method: "POST", body: form });
+  const data = await res.json();
+
+  if (!text) addBubble("customer", data.user_text); // recorded turn: show transcribed text now
+  addBubble("agent", data.agent_text);
+  playAudio(data.audio_url);
+
+  if (data.escalated) {
+    document.getElementById("outcomeBanner").innerHTML =
+      `<div class="outcome-banner escalated">⚠ This call needs a human — flagged for escalation.</div>`;
+  }
+}
+
+document.getElementById("sendTurnBtn").addEventListener("click", () => {
+  const input = document.getElementById("turnText");
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = "";
+  sendTurn({ text });
+});
+document.getElementById("turnText").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") document.getElementById("sendTurnBtn").click();
+});
+
+/* Mic recording for a turn */
+let mediaRecorder = null;
+let chunks = [];
+document.getElementById("micToggle").addEventListener("click", async () => {
+  const btn = document.getElementById("micToggle");
+  if (mediaRecorder && mediaRecorder.state === "recording") {
+    mediaRecorder.stop();
+    return;
+  }
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    chunks = [];
+    mediaRecorder = new MediaRecorder(stream);
+    mediaRecorder.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+    mediaRecorder.onstop = () => {
+      btn.classList.remove("recording");
+      stream.getTracks().forEach(t => t.stop());
+      const blob = new Blob(chunks, { type: "audio/webm" });
+      sendTurn({ audioBlob: blob });
+    };
+    mediaRecorder.start();
+    btn.classList.add("recording");
+  } catch (err) {
+    alert("Microphone access denied or unavailable — you can type instead.");
+  }
+});
+
+document.getElementById("endCallBtn").addEventListener("click", async () => {
+  if (!currentCallId) return;
+  const res = await fetch(`${API}/api/calls/${currentCallId}/end`, { method: "POST" });
+  const call = await res.json();
+
+  document.getElementById("callStatus").textContent = call.status.replace("_", " ");
+  document.getElementById("callStatus").classList.remove("live");
+  document.getElementById("agentAvatar").classList.remove("live");
+  document.getElementById("inputRow").style.display = "none";
+  document.getElementById("endCallWrap").style.display = "none";
+
+  const bannerClass = call.resolved ? "resolved" : "escalated";
+  const bannerText = call.resolved ? "✓ Call resolved by the agent." : "⚠ Call was escalated to a human.";
+  document.getElementById("outcomeBanner").innerHTML = `<div class="outcome-banner ${bannerClass}">${bannerText}</div>`;
+
+  currentCallId = null;
+});
+
+/* ---------- Init ---------- */
+loadSettings();
+</script>
+</body>
+</html>
